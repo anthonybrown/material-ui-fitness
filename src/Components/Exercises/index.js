@@ -12,7 +12,16 @@ const styles = {
   }
 }
 
-export default ({ exercises, category }) =>
+export default ({
+  exercises,
+  onSelect,
+  category,
+  exercise: {
+    id,
+    title = 'Welcome',
+    description = 'Please select an exercise from the list on the left.',
+  }
+}) =>
   <Grid container spacing={8}>
     <Grid item sm>
       <Paper style={styles.Paper}>
@@ -26,9 +35,12 @@ export default ({ exercises, category }) =>
                 {group}
               </Typography>
               <List component='ul'>
-                {exercises.map(({ title }) =>
+                {exercises.map(({ id, title }) =>
                   <ListItem button>
-                    <ListItemText primary={title} />
+                    <ListItemText
+                      primary={title}
+                      onClick={() => onSelect(id)}
+                    />
                   </ListItem>
                 )}
               </List>
@@ -42,12 +54,12 @@ export default ({ exercises, category }) =>
         <Typography
           variant='display1'
         gutterBottom>
-          Welcome
+          {title}
         </Typography>
         <Typography
           variant='subheading'
         >
-          Please select an exercise from the list on the left.
+          {description}
         </Typography>
       </Paper>
     </Grid>
