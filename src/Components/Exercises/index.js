@@ -8,7 +8,7 @@ const styles = {
 }
 
 export default (props) =>
-  <Grid container>
+  <Grid container spacing={8}>
     <Grid item sm>
       <LeftPane styles={styles} />
     </Grid>
