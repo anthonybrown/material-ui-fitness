@@ -27,20 +27,21 @@ export default ({
       <Paper style={styles.Paper}>
         {exercises.map(([group, exercises]) =>
           !category || category === group
-            ? <Fragment>
+            ? <Fragment key={group}>
               <Typography
                 variant='title'
                 style={{textTransform: 'capitalize'}}
               >
                 {group}
               </Typography>
-              <List component='ul'>
+              <List key={id} component='ul'>
                 {exercises.map(({ id, title }) =>
-                  <ListItem button>
-                    <ListItemText
-                      primary={title}
-                      onClick={() => onSelect(id)}
-                    />
+                  <ListItem
+                    key={id}
+                    button
+                    onClick={() => onSelect(id)}
+                  >
+                    <ListItemText primary={title} />
                   </ListItem>
                 )}
               </List>
