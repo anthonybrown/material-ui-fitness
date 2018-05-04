@@ -12,26 +12,28 @@ const styles = {
   }
 }
 
-export default ({ exercises }) =>
+export default ({ exercises, category }) =>
   <Grid container spacing={8}>
     <Grid item sm>
       <Paper style={styles.Paper}>
         {exercises.map(([group, exercises]) =>
-          <Fragment>
-            <Typography
-              variant='title'
-              style={{textTransform: 'capitalize'}}
-            >
-              {group}
-            </Typography>
-            <List component='ul'>
-              {exercises.map(({ title }) =>
-                <ListItem button>
-                  <ListItemText primary={title} />
-                </ListItem>
-              )}
-            </List>
-          </Fragment>
+          !category || category === group
+            ? <Fragment>
+              <Typography
+                variant='title'
+                style={{textTransform: 'capitalize'}}
+              >
+                {group}
+              </Typography>
+              <List component='ul'>
+                {exercises.map(({ title }) =>
+                  <ListItem button>
+                    <ListItemText primary={title} />
+                  </ListItem>
+                )}
+              </List>
+            </Fragment>
+            : null
         )}
       </Paper>
     </Grid>
