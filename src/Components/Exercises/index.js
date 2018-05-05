@@ -15,6 +15,7 @@ const styles = {
     marginTop: 10,
     marginBottom: 10,
     height: 370,
+    //minWidth: 260,
     overflowY: 'auto'
   }
 }
@@ -28,12 +29,12 @@ export default ({
   exercise: {
     id,
     title = 'Welcome',
-    description = 'Please select an exercise from the list on the left.',
+    description = `Please select an exercise from the list on the left.`,
   },
   onDelete
 }) =>
   <Grid container spacing={16}>
-    <Grid item sm>
+    <Grid item xs>
       <Paper style={styles.Paper}>
         {exercises.map(([group, exercises]) =>
           !category || category === group
