@@ -4,7 +4,7 @@ import { Tab } from 'material-ui/Tabs'
 
 export default ({ muscles, category, onSelect }) => {
   const index = category
-    ? muscles.findIndex(group => group == category) + 1
+    ? muscles.findIndex(group => group === category) + 1
     : 0
 
   const onIndexSelect = (e, index) =>

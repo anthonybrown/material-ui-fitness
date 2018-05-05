@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { TextField, Select, Button } from 'material-ui'
 import { FormControl } from 'material-ui/Form'
 import { InputLabel } from 'material-ui/Input'
 import { MenuItem } from 'material-ui/Menu'
@@ -6,44 +7,48 @@ import { withStyles } from 'material-ui/styles'
 
 const styles = theme => ({
   FormControl: {
-    width: 500,
+    width: 300  ,
   }
 })
 
 export default withStyles(styles)(class extends Component {
-  state =  {
-    title: '',
-    description: '',
-    muscles: '',
+  state = this.getInitState()
+
+  getInitState() {
+    const { exercise } = this.props
+
+    return exercise ? exercise : {
+      title: '',
+      description: '',
+      muscles: '',
+    }
+  }
+
+  componentWillReceiveProps({ exercise }) {
+    this.setState({
+      ...exercise
+    })
+  }
 
   handleChange = name => ({ target: { value } }) =>
     this.setState({
       [name]: value
     })
 
-  handleSubmit = () =>
+  handleSubmit = () => {
     // TODO: validate
 
-    const { exercise } = this.state
-
-    this.props.onCreate({
-      ...exercise,
-      id: exercise.title.toLowerCase().replace(/ /g, '-')
+    this.props.onSubmit({
+      id: this.state.title.toLowerCase().replace(/ /g, '-'),
+      ...this.state,
     })
 
-    this.setState({
-      exercise: {
-        title: '',
-        description: '',
-        muscles: '',
-      },
-      open: false
-    })
+    this.setState(this.getInitState())
   }
 
-
   render() {
-    const  { classes, muscles: categories } = this.props
+    const  { classes, exercise, muscles: categories } = this.props
+    const { title, description, muscles } = this.state
 
     return (
       <form>
@@ -81,7 +86,16 @@ export default withStyles(styles)(class extends Component {
           onChange={this.handleChange('description')}
           margin="normal"
         />
+        <br />
+        <Button
+          onClick={this.handleSubmit}
+          color='primary'
+          variant='raised'
+        >
+          {exercise ? 'Edit' : 'Create'}
+        </Button>
       </form>
     )
   }
-})
+}
+)

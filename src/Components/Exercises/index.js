@@ -1,8 +1,9 @@
 import React, { Fragment } from 'react'
 import { Grid, Paper, Typography, IconButton } from 'material-ui'
-import CommentIcon from '@material-ui/icons/Comment'
 import DeleteIcon from '@material-ui/icons/Delete'
-import CreateIcon from '@material-ui/icons/Create'
+import EditIcon from '@material-ui/icons/Edit'
+import Form from './Form'
+
 import List, {
   ListItem,
   ListItemText,
@@ -19,18 +20,21 @@ const styles = {
   }
 }
 
-
-
 export default ({
+  muscles,
   exercises,
   onSelect,
+  editMode,
   category,
   exercise: {
     id,
     title = 'Welcome',
     description = `Please select an exercise from the list on the left.`,
   },
-  onDelete
+  onDelete,
+  onSelectEdit,
+  onEdit,
+  exercise,
 }) =>
   <Grid container spacing={16}>
     <Grid item xs>
@@ -54,9 +58,10 @@ export default ({
                     <ListItemText primary={title} />
                     <ListItemSecondaryAction>
                       <IconButton
+                        onClick={() => onSelectEdit(id)}
                         aria-label='Create'
                       >
-                        <CreateIcon />
+                        <EditIcon />
                       </IconButton>
                       <IconButton
                         onClick={() => onDelete(id)}
@@ -75,16 +80,25 @@ export default ({
     </Grid>
     <Grid item sm>
       <Paper style={styles.Paper}>
-        <Typography
-          variant='display1'
-        gutterBottom>
-          {title}
-        </Typography>
-        <Typography
-          variant='subheading'
-        >
-          {description}
-        </Typography>
+        {editMode
+          ? <Form
+            exercise={exercise}
+            muscles={muscles}
+            onSubmit={onEdit}
+            />
+          : <Fragment>
+            <Typography
+              variant='display1'
+            gutterBottom>
+              {title}
+            </Typography>
+            <Typography
+              variant='subheading'
+            >
+              {description}
+            </Typography>
+          </Fragment>
+        }
       </Paper>
     </Grid>
   </Grid>
