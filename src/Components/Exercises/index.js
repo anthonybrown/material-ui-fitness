@@ -15,7 +15,6 @@ const styles = {
     marginTop: 10,
     marginBottom: 10,
     height: 370,
-    //minWidth: 260,
     overflowY: 'auto'
   }
 }

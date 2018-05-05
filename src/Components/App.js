@@ -11,6 +11,13 @@ export default class extends Component {
   }
 
   getExercisesByMuscles() {
+    const initialExercises = muscles.reduce((exercises, category) => ({
+      ...exercises,
+      [category]: []
+    }), {})
+
+    console.log(muscles, initialExercises);
+
     return Object.entries(
       this.state.exercises.reduce((exercises, exercise) => {
         const { muscles } = exercise
@@ -20,7 +27,7 @@ export default class extends Component {
           : [exercise]
 
         return exercises
-      }, {})
+      }, initialExercises)
     )
   }
 
