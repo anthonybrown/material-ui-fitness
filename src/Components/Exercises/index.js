@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react'
 import { Grid, Paper, Typography, IconButton } from 'material-ui'
-import DeleteIcon from '@material-ui/icons/Delete'
-import EditIcon from '@material-ui/icons/Edit'
+import { Edit, Delete } from '@material-ui/icons'
 import Form from './Form'
 
 import List, {
@@ -14,7 +13,7 @@ const styles = {
   Paper: {
     padding: 20,
     marginTop: 10,
-    marginBottom: 10,
+    marginBottom: 30,
     height: 370,
     overflowY: 'auto'
   }
@@ -61,13 +60,13 @@ export default ({
                         onClick={() => onSelectEdit(id)}
                         aria-label='Create'
                       >
-                        <EditIcon />
+                        <Edit />
                       </IconButton>
                       <IconButton
                         onClick={() => onDelete(id)}
                         aria-label='Delete'
                       >
-                        <DeleteIcon />
+                        <Delete />
                       </IconButton>
                     </ListItemSecondaryAction>
                   </ListItem>
@@ -78,7 +77,7 @@ export default ({
         )}
       </Paper>
     </Grid>
-    <Grid item sm>
+    <Grid item xs>
       <Paper style={styles.Paper}>
         {editMode
           ? <Form

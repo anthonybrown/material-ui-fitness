@@ -5,7 +5,7 @@ import {
   DialogContentText,
   DialogTitle,
 } from 'material-ui/Dialog'
-import AddIcon from '@material-ui/icons/Add';
+import { Add } from '@material-ui/icons'
 import Form from './Form'
 
 export default class extends Component {
@@ -38,7 +38,7 @@ export default class extends Component {
           variant='fab'
           aria-label='add'
         >
-          <AddIcon />
+          <Add />
         </Button>
         <Dialog
           open={open}
