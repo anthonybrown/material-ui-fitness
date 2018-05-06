@@ -50,10 +50,10 @@ export default class extends Component {
     }))
 
   handleExerciseDelete = id =>
-    this.setState(({ exercises }) => ({
+    this.setState(({ exercises, exercise }) => ({
       exercises: exercises.filter(ex => ex.id !== id),
       editMode: false,
-      exersice: {}
+      exercise: exercise.id === id ? {} : exercise
     }))
 
   handleExerciseSelectEdit = id =>

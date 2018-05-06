@@ -23,7 +23,7 @@ export const exercises = [
   },
   {
     id: 'Flat Bench Dumbbell Press',
-    title: 'Dumbell Press',
+    title: 'Dumbbell Press',
     description: `With dumbbells, each side of your
     body must work independently, which recruits
     more stabilizer muscles; dumbbells are harder
