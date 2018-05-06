@@ -25,7 +25,7 @@ export default withStyles(styles)(class extends Component {
   }
 
   static getDerivedStateFromProps({ exercise }) {
-    return exercise
+    return exercise || null
   }
 
   handleChange = name => ({ target: { value } }) =>
