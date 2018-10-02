@@ -16,8 +16,7 @@ export default class extends Component {
       (exercises, category) => ({
         ...exercises,
         [category]: []
-      }),
-      {}
+      }), {}
     )
 
     return Object.entries(
@@ -72,13 +71,13 @@ export default class extends Component {
   getContext = () => ({
     muscles,
     ...this.state,
-    exercisesByMuscles: this.getExercisesByMuscles(),
-    onCategorySelect: this.handleCategorySelect,
-    onCreate: this.handleExerciseCreate,
-    onEdit: this.handleExerciseEdit,
-    onSelectEdit: this.handleExerciseSelectEdit,
-    onDelete: this.handleExerciseDelete,
-    onSelect: this.handleExerciseSelect
+    exercisesByMuscles : this.getExercisesByMuscles(),
+    onCategorySelect   : this.handleCategorySelect,
+    onCreate           : this.handleExerciseCreate,
+    onEdit             : this.handleExerciseEdit,
+    onSelectEdit       : this.handleExerciseSelectEdit,
+    onDelete           : this.handleExerciseDelete,
+    onSelect           : this.handleExerciseSelect
   })
 
   render() {
