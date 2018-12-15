@@ -28,8 +28,8 @@ class CreateDialog extends Component {
   }
 
   render() {
-    const { open } = this.state,
-      { muscles } = this.props
+    const { open } = this.state
+    const { muscles } = this.props
 
     return (
       <Fragment>

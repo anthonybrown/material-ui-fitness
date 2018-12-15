@@ -5,7 +5,11 @@ import { withContext } from '../../context'
 class Footer extends Component {
   onIndexSelect = (e, index) => {
     const { onCategorySelect, muscles } = this.props
-    onCategorySelect(index === 0 ? '' : muscles[index - 1])
+    onCategorySelect(
+      index === 0 
+        ? '' 
+        : muscles[index - 1]
+    )
   }
 
   getIndex = () => {
