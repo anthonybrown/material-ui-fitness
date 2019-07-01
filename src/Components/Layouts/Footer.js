@@ -6,8 +6,8 @@ class Footer extends Component {
   onIndexSelect = (e, index) => {
     const { onCategorySelect, muscles } = this.props
     onCategorySelect(
-      index === 0 
-        ? '' 
+      index === 0
+        ? ''
         : muscles[index - 1]
     )
   }

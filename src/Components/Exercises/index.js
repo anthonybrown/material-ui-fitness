@@ -57,7 +57,7 @@ const Exercises = ({
   exercise: {
     id,
     title = 'Welcome, let\'s get going',
-    description = 'Please select an exercise from the list on the left.'
+    description = 'Please select an exercise from the list.'
   },
   onDelete,
   onSelectEdit,
